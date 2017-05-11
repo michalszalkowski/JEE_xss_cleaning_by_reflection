@@ -15,6 +15,8 @@ public class PersonDto {
 
 	private List<AddressDto> addressDtos;
 
+	private PersonType type = PersonType.MAN;
+
 	public PersonDto() {
 	}
 

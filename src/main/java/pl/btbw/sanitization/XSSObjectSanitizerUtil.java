@@ -30,7 +30,7 @@ public class XSSObjectSanitizerUtil {
 					}
 
 				} else if (omit(field.getType())) {
-					System.out.println("We are not cleaning:" + field.getType());
+					// System.out.println("We are not cleaning:" + field.getType());
 				} else {
 					Object subObject = field.get(object);
 
@@ -48,9 +48,13 @@ public class XSSObjectSanitizerUtil {
 	}
 
 	private static boolean omit(Class<?> type) {
-		return type.equals(Boolean.class)
+		return type.isPrimitive()
+				|| type.isEnum()
+				|| type.equals(Boolean.class)
 				|| type.equals(Date.class)
 				|| type.equals(Integer.class)
+				|| type.equals(Float.class)
+				|| type.equals(Double.class)
 				|| type.equals(XMLGregorianCalendar.class)
 				;
 	}

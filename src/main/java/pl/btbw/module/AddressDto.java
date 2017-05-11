@@ -12,6 +12,11 @@ public class AddressDto {
 
 	private Integer integer = new Integer(10);
 
+	private Float aFloat = new Float(1.1);
+
+	private int i = 1;
+
+
 	public AddressDto() {
 	}
 
