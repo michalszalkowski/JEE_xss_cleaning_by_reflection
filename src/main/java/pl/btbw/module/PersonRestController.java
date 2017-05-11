@@ -1,5 +1,6 @@
 package pl.btbw.module;
 
+import pl.btbw.module.person.PersonDto;
 import pl.btbw.sanitization.XSSObjectSanitizerUtil;
 
 import javax.ws.rs.Consumes;

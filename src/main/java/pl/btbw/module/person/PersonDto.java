@@ -1,4 +1,4 @@
-package pl.btbw.module;
+package pl.btbw.module.person;
 
 import javax.ws.rs.FormParam;
 import java.util.List;

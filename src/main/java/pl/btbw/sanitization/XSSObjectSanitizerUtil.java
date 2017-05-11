@@ -24,9 +24,16 @@ public class XSSObjectSanitizerUtil {
 
 				} else if (field.getType().equals(List.class)) {
 
-					List value = (List) field.get(object);
-					for (Object subObject : value) {
-						sanitizer(subObject);
+					List list = (List) field.get(object);
+					int index = 0;
+					for (Object item : list) {
+						if (item.getClass().equals(String.class)) {
+							String value = clean((String) item);
+							list.set(index, value);
+						} else {
+							sanitizer(item);
+						}
+						index++;
 					}
 
 				} else if (omit(field.getType())) {
@@ -60,7 +67,7 @@ public class XSSObjectSanitizerUtil {
 	}
 
 	// this is only experiment
-	private static String clean(String str) {
+	public static String clean(String str) {
 		String newValue = str.replaceAll("<[^>]*>", "");
 		if (!str.equals(newValue)) {
 			System.out.println("XSS Detect. Old Value: " + str + ", new value: " + newValue);
